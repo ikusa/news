@@ -4,12 +4,12 @@ import { Query } from 'react-apollo';
 
 import { Text, View } from '../core-ui';
 import HeadLine from '../components/HeadLine';
-import { Article } from '../types/article.type';
 import { ArticlesData } from '../generated/ArticlesData';
 
 let GET_ARTICLES = gql`
   query ArticlesData {
     findManyArticle {
+      id
       title
       content
       author {
@@ -32,7 +32,7 @@ function Articles() {
               <HeadLine
                 key={idx}
                 style={styles.headline}
-                article={article}
+                id={article.id}
                 onDetailPress={() => console.log('Called')}
               />
             ))}

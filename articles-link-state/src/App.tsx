@@ -12,6 +12,7 @@ function App() {
       <View style={styles.app}>
         <View style={styles.wrapper}>
           <Articles />
+          <Articles />
         </View>
       </View>
     </ApolloProvider>

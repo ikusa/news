@@ -3,22 +3,26 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL query operation: ArticlesData
+// GraphQL query operation: ArticleData
 // ====================================================
 
-export interface ArticlesData_findManyArticle_author {
+export interface ArticleData_findOneArticle_author {
   __typename: "User";
   name: string | null;
 }
 
-export interface ArticlesData_findManyArticle {
+export interface ArticleData_findOneArticle {
   __typename: "Article";
   id: string;
   title: string;
   content: string;
-  author: ArticlesData_findManyArticle_author;
+  author: ArticleData_findOneArticle_author;
 }
 
-export interface ArticlesData {
-  findManyArticle: ArticlesData_findManyArticle[] | null;
+export interface ArticleData {
+  findOneArticle: ArticleData_findOneArticle | null;
+}
+
+export interface ArticleDataVariables {
+  id?: string | null;
 }

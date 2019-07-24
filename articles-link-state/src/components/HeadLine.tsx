@@ -1,29 +1,57 @@
 import React from 'react';
+import { gql } from 'apollo-boost';
+import { Query } from 'react-apollo';
 
 import { Button, Card, Text, View } from '../core-ui';
-import { Article } from '../types/article.type';
+import { ArticleData, ArticleDataVariables } from '../generated/ArticleData';
+// import { Article } from '../types/article.type';
 
 type Props = {
-  article: Article;
+  id: string;
   onDetailPress?: () => void;
   style?: Object;
 };
 
+let GET_ARTICLE = gql`
+  query ArticleData($id: ID) {
+    findOneArticle(where: { id: $id }) {
+      id
+      title
+      content
+      author {
+        name
+      }
+    }
+  }
+`;
 function HeadLine(props: Props) {
-  let { article, style, onDetailPress } = props;
+  let { id, style, onDetailPress } = props;
   let containerStyle = { ...styles.wrapper, ...style };
   return (
-    <Card style={containerStyle}>
-      <Text style={styles.title}>{article.title}</Text>
-      <Text style={styles.author}>{article.author.name}</Text>
-      <Text style={styles.content}>{article.content}</Text>
-      <View style={styles.buttonWrapper}>
-        <Button onPress={onDetailPress}>Read Article</Button>
-        <Button onPress={onDetailPress} type="delete">
-          Delete Article
-        </Button>
-      </View>
-    </Card>
+    <Query<ArticleData, ArticleDataVariables>
+      query={GET_ARTICLE}
+      variables={{ id }}
+    >
+      {({ data, loading }) => {
+        if (loading || !data || !data.findOneArticle) {
+          return null;
+        }
+        let article = data.findOneArticle;
+        return (
+          <Card style={containerStyle}>
+            <Text style={styles.title}>{article.title}</Text>
+            <Text style={styles.author}>{article.author.name}</Text>
+            <Text style={styles.content}>{article.content}</Text>
+            <View style={styles.buttonWrapper}>
+              <Button onPress={onDetailPress}>Read Article</Button>
+              <Button onPress={onDetailPress} type="delete">
+                Delete Article
+              </Button>
+            </View>
+          </Card>
+        );
+      }}
+    </Query>
   );
 }
 
