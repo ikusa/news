@@ -1,14 +1,10 @@
 import React from 'react';
+
 import { Button, Card, Text, View } from '../core-ui';
+import { Article } from '../types/article.type';
 
 type Props = {
-  article: {
-    title: string;
-    content: string;
-    author: {
-      name: string;
-    };
-  };
+  article: Article;
   onDetailPress?: () => void;
   style?: Object;
 };

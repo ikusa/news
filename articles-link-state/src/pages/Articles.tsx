@@ -1,39 +1,44 @@
 import React from 'react';
+import { gql } from 'apollo-boost';
+import { Query } from 'react-apollo';
+
 import { Text, View } from '../core-ui';
 import HeadLine from '../components/HeadLine';
+import { Article } from '../types/article.type';
 
-const articles = [
-  {
-    title: 'Is it Good To Be Smart?',
-    content:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, ... ... ...",
-    author: {
-      name: 'Bob Marley'
-    }
-  },
-  {
-    title: 'Is it Bad To Be Dummy?',
-    content:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s ... ... ...",
-    author: {
-      name: 'Marley Bob'
+let GET_ARTICLES = gql`
+  query GET_ARTICLES {
+    findManyArticle {
+      title
+      content
+      author {
+        name
+      }
     }
   }
-];
-
+`;
 function Articles() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>List Of Articles</Text>
-      {articles.map((article, idx) => (
-        <HeadLine
-          key={idx}
-          style={styles.headline}
-          article={article}
-          onDetailPress={() => console.log('Called')}
-        />
-      ))}
-    </View>
+    <Query<{ findManyArticle: Array<Article> }> query={GET_ARTICLES}>
+      {({ data, loading }) => {
+        if (loading || !data) {
+          return null;
+        }
+        return (
+          <View style={styles.container}>
+            <Text style={styles.title}>List Of Articles</Text>
+            {data.findManyArticle.map((article, idx) => (
+              <HeadLine
+                key={idx}
+                style={styles.headline}
+                article={article}
+                onDetailPress={() => console.log('Called')}
+              />
+            ))}
+          </View>
+        );
+      }}
+    </Query>
   );
 }
 
