@@ -1,14 +1,20 @@
 import React from 'react';
-import {View} from './core-ui';
-import {Articles} from './pages';
+import { ApolloProvider } from 'react-apollo';
+
+import { client } from './lib/client';
+
+import { Articles } from './pages';
+import { View } from './core-ui';
 
 function App() {
   return (
-    <View style={styles.app}>
-      <View style={styles.wrapper}>
-        <Articles />
+    <ApolloProvider client={client}>
+      <View style={styles.app}>
+        <View style={styles.wrapper}>
+          <Articles />
+        </View>
       </View>
-    </View>
+    </ApolloProvider>
   );
 }
 
