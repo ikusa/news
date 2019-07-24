@@ -1,11 +1,11 @@
 import React from 'react';
-import {Button, Card, Text, View} from '../core-ui';
+import { Button, Card, Text, View } from '../core-ui';
 
 type Props = {
   article: {
     title: string;
     content: string;
-    user: {
+    author: {
       name: string;
     };
   };
@@ -14,12 +14,12 @@ type Props = {
 };
 
 function HeadLine(props: Props) {
-  let {article, style, onDetailPress} = props;
-  let containerStyle = {...styles.wrapper, ...style};
+  let { article, style, onDetailPress } = props;
+  let containerStyle = { ...styles.wrapper, ...style };
   return (
     <Card style={containerStyle}>
       <Text style={styles.title}>{article.title}</Text>
-      <Text style={styles.author}>{article.user.name}</Text>
+      <Text style={styles.author}>{article.author.name}</Text>
       <Text style={styles.content}>{article.content}</Text>
       <View style={styles.buttonWrapper}>
         <Button onPress={onDetailPress}>Read Article</Button>
@@ -54,7 +54,8 @@ const styles = {
   buttonWrapper: {
     flexDirection: 'row',
     alignSelf: 'flex-end',
-    paddingTop: 20
+    marginTop: 20,
+    backgroundColor: 'transperent'
   }
 };
 export default HeadLine;

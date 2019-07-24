@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View} from '../core-ui';
+import { Text, View } from '../core-ui';
 import HeadLine from '../components/HeadLine';
 
 const articles = [
@@ -7,7 +7,7 @@ const articles = [
     title: 'Is it Good To Be Smart?',
     content:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, ... ... ...",
-    user: {
+    author: {
       name: 'Bob Marley'
     }
   },
@@ -15,7 +15,7 @@ const articles = [
     title: 'Is it Bad To Be Dummy?',
     content:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s ... ... ...",
-    user: {
+    author: {
       name: 'Marley Bob'
     }
   }
