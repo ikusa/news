@@ -19,7 +19,7 @@ declare global {
 
 export interface NexusGenInputs {
   ArticleCreateInput: { // input type
-    author?: NexusGenInputs['UserCreateOneWithoutAuthorInput'] | null; // UserCreateOneWithoutAuthorInput
+    author: NexusGenInputs['UserCreateOneWithoutAuthorInput']; // UserCreateOneWithoutAuthorInput!
     content: string; // String!
     id?: string | null; // ID
     title: string; // String!
@@ -96,7 +96,7 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
 
 export interface NexusGenFieldTypes {
   Article: { // field return type
-    author: NexusGenRootTypes['User'] | null; // User
+    author: NexusGenRootTypes['User']; // User!
     content: string; // String!
     createdAt: any; // DateTime!
     id: string; // ID!

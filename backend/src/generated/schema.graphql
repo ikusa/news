@@ -3,7 +3,7 @@
 
 
 type Article {
-  author: User
+  author: User!
   content: String!
   createdAt: DateTime!
   id: ID!
@@ -12,7 +12,7 @@ type Article {
 }
 
 input ArticleCreateInput {
-  author: UserCreateOneWithoutAuthorInput
+  author: UserCreateOneWithoutAuthorInput!
   content: String!
   id: ID
   title: String!
