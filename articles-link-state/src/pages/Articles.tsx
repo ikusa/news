@@ -5,9 +5,10 @@ import { Query } from 'react-apollo';
 import { Text, View } from '../core-ui';
 import HeadLine from '../components/HeadLine';
 import { Article } from '../types/article.type';
+import { ArticlesData } from '../generated/ArticlesData';
 
 let GET_ARTICLES = gql`
-  query GET_ARTICLES {
+  query ArticlesData {
     findManyArticle {
       title
       content
@@ -19,9 +20,9 @@ let GET_ARTICLES = gql`
 `;
 function Articles() {
   return (
-    <Query<{ findManyArticle: Array<Article> }> query={GET_ARTICLES}>
+    <Query<ArticlesData> query={GET_ARTICLES}>
       {({ data, loading }) => {
-        if (loading || !data) {
+        if (loading || !data || !data.findManyArticle) {
           return null;
         }
         return (
