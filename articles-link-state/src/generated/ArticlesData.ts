@@ -13,6 +13,7 @@ export interface ArticlesData_findManyArticle_author {
 
 export interface ArticlesData_findManyArticle {
   __typename: "Article";
+  id: string;
   title: string;
   content: string;
   author: ArticlesData_findManyArticle_author;
