@@ -12,7 +12,10 @@ const Query = objectType({
     t.crud.findOneUser();
     t.crud.findManyUser();
     t.crud.findOneArticle();
-    t.crud.findManyArticle();
+    t.crud.findManyArticle({
+      filtering: true,
+      ordering: true
+    });
   }
 });
 

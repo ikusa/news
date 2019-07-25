@@ -36,6 +36,47 @@ export interface NexusGenInputs {
   ArticleWhereUniqueInput: { // input type
     id?: string | null; // ID
   }
+  QueryFindManyArticleFilter: { // input type
+    equals?: any | null; // DateTime
+    gt?: any | null; // DateTime
+    gte?: any | null; // DateTime
+    in?: any[] | null; // [DateTime!]
+    lt?: any | null; // DateTime
+    lte?: any | null; // DateTime
+    not?: any | null; // DateTime
+    notIn?: any[] | null; // [DateTime!]
+  }
+  QueryFindManyArticleOrderByInput: { // input type
+    content?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    createdAt?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    title?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    updatedAt?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+  }
+  QueryFindManyArticleWhereInput: { // input type
+    AND?: NexusGenInputs['QueryFindManyArticleWhereInput'][] | null; // [QueryFindManyArticleWhereInput!]
+    author?: NexusGenInputs['QueryFindManyArticleWhereInput'] | null; // QueryFindManyArticleWhereInput
+    content?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    createdAt?: NexusGenInputs['QueryFindManyArticleFilter'] | null; // QueryFindManyArticleFilter
+    id?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    NOT?: NexusGenInputs['QueryFindManyArticleWhereInput'][] | null; // [QueryFindManyArticleWhereInput!]
+    OR?: NexusGenInputs['QueryFindManyArticleWhereInput'][] | null; // [QueryFindManyArticleWhereInput!]
+    title?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    updatedAt?: NexusGenInputs['QueryFindManyArticleFilter'] | null; // QueryFindManyArticleFilter
+  }
+  StringFilter: { // input type
+    contains?: string | null; // String
+    endsWith?: string | null; // String
+    equals?: string | null; // String
+    gt?: string | null; // String
+    gte?: string | null; // String
+    in?: string[] | null; // [String!]
+    lt?: string | null; // String
+    lte?: string | null; // String
+    not?: string | null; // String
+    notIn?: string[] | null; // [String!]
+    startsWith?: string | null; // String
+  }
   UserCreateInput: { // input type
     articles?: NexusGenInputs['ArticleCreateManyWithoutArticlesInput'] | null; // ArticleCreateManyWithoutArticlesInput
     email: string; // String!
@@ -58,6 +99,7 @@ export interface NexusGenInputs {
 }
 
 export interface NexusGenEnums {
+  OrderByArg: "asc" | "desc"
 }
 
 export interface NexusGenRootTypes {
@@ -88,10 +130,15 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
   ArticleCreateManyWithoutArticlesInput: NexusGenInputs['ArticleCreateManyWithoutArticlesInput'];
   ArticleCreateWithoutAuthorInput: NexusGenInputs['ArticleCreateWithoutAuthorInput'];
   ArticleWhereUniqueInput: NexusGenInputs['ArticleWhereUniqueInput'];
+  QueryFindManyArticleFilter: NexusGenInputs['QueryFindManyArticleFilter'];
+  QueryFindManyArticleOrderByInput: NexusGenInputs['QueryFindManyArticleOrderByInput'];
+  QueryFindManyArticleWhereInput: NexusGenInputs['QueryFindManyArticleWhereInput'];
+  StringFilter: NexusGenInputs['StringFilter'];
   UserCreateInput: NexusGenInputs['UserCreateInput'];
   UserCreateOneWithoutAuthorInput: NexusGenInputs['UserCreateOneWithoutAuthorInput'];
   UserCreateWithoutArticlesInput: NexusGenInputs['UserCreateWithoutArticlesInput'];
   UserWhereUniqueInput: NexusGenInputs['UserWhereUniqueInput'];
+  OrderByArg: NexusGenEnums['OrderByArg'];
 }
 
 export interface NexusGenFieldTypes {
@@ -136,7 +183,9 @@ export interface NexusGenArgTypes {
       before?: string | null; // String
       first?: number | null; // Int
       last?: number | null; // Int
+      orderBy?: NexusGenInputs['QueryFindManyArticleOrderByInput'] | null; // QueryFindManyArticleOrderByInput
       skip?: number | null; // Int
+      where?: NexusGenInputs['QueryFindManyArticleWhereInput'] | null; // QueryFindManyArticleWhereInput
     }
     findManyUser: { // args
       after?: string | null; // String
@@ -170,9 +219,9 @@ export interface NexusGenInheritedFields {}
 
 export type NexusGenObjectNames = "Article" | "Mutation" | "Query" | "User";
 
-export type NexusGenInputNames = "ArticleCreateInput" | "ArticleCreateManyWithoutArticlesInput" | "ArticleCreateWithoutAuthorInput" | "ArticleWhereUniqueInput" | "UserCreateInput" | "UserCreateOneWithoutAuthorInput" | "UserCreateWithoutArticlesInput" | "UserWhereUniqueInput";
+export type NexusGenInputNames = "ArticleCreateInput" | "ArticleCreateManyWithoutArticlesInput" | "ArticleCreateWithoutAuthorInput" | "ArticleWhereUniqueInput" | "QueryFindManyArticleFilter" | "QueryFindManyArticleOrderByInput" | "QueryFindManyArticleWhereInput" | "StringFilter" | "UserCreateInput" | "UserCreateOneWithoutAuthorInput" | "UserCreateWithoutArticlesInput" | "UserWhereUniqueInput";
 
-export type NexusGenEnumNames = never;
+export type NexusGenEnumNames = "OrderByArg";
 
 export type NexusGenInterfaceNames = never;
 
