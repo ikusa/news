@@ -17,6 +17,7 @@ export interface ArticleData_findOneArticle {
   title: string;
   content: string;
   author: ArticleData_findOneArticle_author;
+  active: boolean | null;
 }
 
 export interface ArticleData {
