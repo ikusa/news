@@ -21,6 +21,7 @@ let GET_ARTICLE = gql`
       author {
         name
       }
+      active @client
     }
   }
 `;
