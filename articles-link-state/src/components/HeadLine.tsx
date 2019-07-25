@@ -33,6 +33,9 @@ function HeadLine(props: Props) {
       variables={{ id }}
     >
       {({ data, loading }) => {
+        if (!loading) {
+          console.log('my data ', data);
+        }
         if (loading || !data || !data.findOneArticle) {
           return null;
         }

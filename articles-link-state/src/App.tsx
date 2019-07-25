@@ -1,10 +1,10 @@
 import React from 'react';
-import { ApolloProvider } from 'react-apollo';
+import { ApolloProvider, ApolloConsumer } from 'react-apollo';
 
 import { client } from './lib/client';
 
 import { Articles } from './pages';
-import { View } from './core-ui';
+import { View, Button } from './core-ui';
 
 function App() {
   return (
@@ -15,6 +15,29 @@ function App() {
           <Articles />
         </View>
       </View>
+      <ApolloConsumer>
+        {client => {
+          return (
+            <Button
+              onPress={() => {
+                client.writeData({
+                  data: {
+                    articles: {
+                      id: 'cjyhelnis000195sbbx5t9kyx',
+                      content: 'test',
+                      title: 'test',
+                      active: true,
+                      __typename: 'Article'
+                    }
+                  }
+                });
+              }}
+            >
+              Update Local State
+            </Button>
+          );
+        }}
+      </ApolloConsumer>
     </ApolloProvider>
   );
 }
